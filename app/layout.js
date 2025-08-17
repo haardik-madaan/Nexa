@@ -2,6 +2,8 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import Header from "@/components/custom/Header";
+import SplashCursor from "@/components/reactBits/SplashCursor";
+
 
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400","600","700"] });
@@ -13,11 +15,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en"  className={spaceGrotesk.className} suppressHydrationWarning>
+    <html lang="en" className={spaceGrotesk.className} suppressHydrationWarning>
       
       <body>
         <Provider>
         <Header/>
+        <SplashCursor/>
         {children}
 
         </Provider>

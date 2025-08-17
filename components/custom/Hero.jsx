@@ -53,7 +53,7 @@ const Hero = () => {
         "Bring Your Imagination to Life Online"
       ]}
     typingSpeed={100}
-    pauseDuration={1500}
+    pauseDuration={2000}
     showCursor={true}
     cursorCharacter="|"
   />
