@@ -8,7 +8,7 @@ const Hero = () => {
     <div
       style={{
         width: "100%",
-        height: "600px",
+        height: "100vh",
         position: "relative",
         overflow: "hidden",
       }}
@@ -31,7 +31,7 @@ const Hero = () => {
       <div
         style={{
           position: "absolute",
-          top: "65%",
+          top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
