@@ -1,45 +1,45 @@
+/* ScrollStack.css */
+
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: visible;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  -webkit-transform: translateZ(0);
+  height: 100vh;          /* Full viewport: stable math for stackPosition% */
+  overflow: hidden;        /* Let Lenis control the scroll */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+  perspective: 1200px;
   transform: translateZ(0);
-  will-change: scroll-position;
+  will-change: auto;
 }
 
 .scroll-stack-inner {
-  padding: 20vh 5rem 50rem;
-  min-height: 100vh;
-}
-
-.scroll-stack-card-wrapper {
   position: relative;
+  width: 100%;
+  min-height: 300vh;       /* Give enough runway to see the stack effect */
+  padding: 20vh 5rem 40vh; /* Top/bottom breathing room for the last pin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* horizontally center the cards */
 }
 
 .scroll-stack-card {
   transform-origin: top center;
-  will-change: transform, filter;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  height: 20rem;
-  width: 100%;
+  height: auto;            /* let content define height */
+  width: min(90%, 960px);  /* center-friendly width */
   margin: 30px 0;
-  padding: 3rem;
-  border-radius: 40px;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  border-radius: 32px;
   box-sizing: border-box;
-  /* Improve mobile performance */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  position: relative;
+  background: #0f0f10;
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  will-change: transform, filter;
 }
 
 .scroll-stack-end {
   width: 100%;
-  height: 1px;
+  height: 40vh;           /* smoother release of the last card */
 }
+
