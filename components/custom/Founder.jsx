@@ -14,7 +14,7 @@ const Founder = () => {
         <div className="mb-8 -mt-6">
           <TrueFocus
             className="text-4xl font-extrabold text-white"
-            sentence="Meet the founder"
+            sentence="Meet the Developer"
             manualMode={false}
             blurAmount={2}
             borderColor="blue"

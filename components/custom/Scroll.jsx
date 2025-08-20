@@ -4,6 +4,7 @@ import React from 'react'
 import ScrollStack, { ScrollStackItem } from '../reactBits/ScrollStack'
 import { Play, Type, Sparkles } from 'lucide-react' 
 import LightRays from '../reactBits/LightRays'
+import ResumeCodeEditor from "@/components/reactBits/Editor";
 
 const Scroll = () => {
   return (
@@ -77,7 +78,18 @@ const Scroll = () => {
                 </div>
               </ScrollStackItem>
 
+
               {/* Card 4 */}
+              <ScrollStackItem>
+                <div className="flex items-center justify-between w-full max-w-3xl mx-auto rounded-3xl bg-green-500 shadow-2xl">
+                  <h2 className="text-4xl font-bold m-6">Deploy</h2>
+                  <div className="flex items-center justify-center w-32 h-20 border-4 border-white rounded-xl m-6">
+                    <Sparkles size={48} strokeWidth={2.5} />
+                  </div>
+                </div>
+              </ScrollStackItem>
+
+              {/* Card 5 */}
               <ScrollStackItem>
                 <div className="flex items-center justify-between w-full max-w-3xl mx-auto rounded-3xl bg-orange-600 shadow-2xl">
                   <h2 className="text-4xl font-bold m-6">All on NEXA!</h2>
@@ -92,57 +104,7 @@ const Scroll = () => {
 
           {/* RIGHT SECTION */}
           <div className="flex items-center justify-center w-full md:w-1/2 p-2">
-            <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 p-8 rounded-3xl shadow-2xl max-w-lg text-center md:text-left">
-              <h2 className="text-4xl font-extrabold mb-4 text-white">
-                The Power of NEXA
-              </h2>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                With <span className="font-semibold text-pink-400">NEXA</span>, 
-                you can <span className="text-indigo-400">build</span> faster, 
-                <span className="text-purple-400"> customize</span> freely, 
-                and <span className="text-orange-400">debug</span> effortlessly.  
-              </p>
-
-              {/* Features */}
-              <div className="mt-4 text-gray-400 space-y-4">
-                <div className="flex items-start space-x-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-indigo-500 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v10a2 2 0 01-2 2z" />
-                  </svg>
-                  <p>Seamless workflow from idea generation to final deployment with precision and care at every step.</p>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-indigo-500 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <p>Focus on efficiency, scalability, and elegant design to deliver high-quality solutions.</p>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-indigo-500 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 1.343-3 3v5h6v-5c0-1.657-1.343-3-3-3z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 20h14" />
-                  </svg>
-                  <p>Structured methodologies combined with modern technologies ensure smarter and faster execution.</p>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-indigo-500 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3" />
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                  </svg>
-                  <p>Impactful results that transform concepts into practical digital products with real-world value.</p>
-                </div>
-              </div>
-
-              {/* Button */}
-              <div className="mt-6">
-                <button className="px-6 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 rounded-xl font-semibold shadow-lg hover:opacity-90 transition">
-                  Learn More
-                </button>
-              </div>
-            </div>
+            <ResumeCodeEditor/>
           </div>
 
         </div>
