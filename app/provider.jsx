@@ -2,11 +2,12 @@
 
 import React from 'react'
 import { ThemeProvider as NextThemesProvider } from "next-themes"
-import Header from '@/components/custom/Header'
+import LightRays from '@/components/reactBits/LightRays'
 
 const Provider = ({children}) => {
   return (
-    <div>
+    <div className="relative">
+        <LightRays className="!fixed inset-0 !-z-10 pointer-events-none" />
         <NextThemesProvider
         attribute="class"
         defaultTheme="dark"

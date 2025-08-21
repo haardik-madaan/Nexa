@@ -1,0 +1,17 @@
+/home/haardik/Downloads/Cursor.AppImage: ignoring input
+ ⚠ Port 3000 is in use by an unknown process, using available port 3003 instead.
+   ▲ Next.js 15.4.6
+   - Local:        http://localhost:3003
+   - Network:      http://192.168.1.11:3003
+
+ ✓ Starting...
+ ✓ Ready in 3.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 5.3s (1623 modules)
+ HEAD / 200 in 6276ms
+ GET / 200 in 598ms
+ ✓ Compiled in 6.7s (756 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 4.4s (1620 modules)
+ HEAD / 200 in 7066ms
+ GET / 200 in 317ms

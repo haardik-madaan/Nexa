@@ -3,7 +3,6 @@
 import React from 'react'
 import ScrollStack, { ScrollStackItem } from '../reactBits/ScrollStack'
 import { Play, Type, Sparkles } from 'lucide-react' 
-import LightRays from '../reactBits/LightRays'
 import ResumeCodeEditor from "@/components/reactBits/Editor";
 
 const Scroll = () => {
@@ -16,19 +15,8 @@ const Scroll = () => {
         overflow: "hidden",
       }}
     >
-      {/* Background LightRays */}
-      <LightRays
-        raysOrigin="right"
-        raysColor="#00ffff"
-        raysSpeed={1.5}
-        lightSpread={0.8}
-        rayLength={1.2}
-        followMouse={true}
-        mouseInfluence={0.1}
-        noiseAmount={0.1}
-        distortion={0.05}
-        className="custom-rays"
-      />
+      
+      
 
       {/* Foreground content centered */}
       <div

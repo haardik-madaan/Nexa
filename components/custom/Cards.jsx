@@ -7,7 +7,6 @@ import second from "@/public/second.png";
 import deploy from "@/public/deploy.png";
 import { Lock, Rocket, ShieldCheck, Users } from "lucide-react";
 import { motion } from "framer-motion";
-import LightRays from "../reactBits/LightRays";
 
 const Cards = () => {
   return (
@@ -19,19 +18,8 @@ const Cards = () => {
         overflow: "hidden",
       }}
     >
-      {/* Background LightRays */}
-      <LightRays
-        raysOrigin="left"
-        raysColor="#00ffff"
-        raysSpeed={1.5}
-        lightSpread={0.8}
-        rayLength={1.2}
-        followMouse={true}
-        mouseInfluence={0.1}
-        noiseAmount={0.1}
-        distortion={0.05}
-        className="custom-rays"
-      />
+      
+      
 
       {/* Foreground content centered like Hero */}
       <div

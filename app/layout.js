@@ -2,7 +2,6 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import Header from "@/components/custom/Header";
-import SplashCursor from "@/components/reactBits/SplashCursor";
 
 
 
