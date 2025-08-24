@@ -1,5 +1,5 @@
 import React from 'react'
-import CardNav from '../reactBits/CardNav';
+import CardNav from '../../reactBits/CardNav';
 import logo from "@/public/logo.png"; 
 
 

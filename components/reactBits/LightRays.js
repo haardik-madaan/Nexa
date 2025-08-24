@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { Renderer, Program, Triangle, Mesh } from "ogl";
 import "./LightRays.css";
 
-const DEFAULT_COLOR = "#ffffff";
+const DEFAULT_COLOR = "#00F5FF";
 
 const hexToRgb = (hex) => {
   const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -42,14 +42,14 @@ const getAnchorAndDir = (origin, w, h) => {
 const LightRays = ({
   raysOrigin = "top-center",
   raysColor = DEFAULT_COLOR,
-  raysSpeed = 1,
-  lightSpread = 1,
-  rayLength = 2,
+  raysSpeed = 2,
+  lightSpread = 5,
+  rayLength = 4,
   pulsating = false,
   fadeDistance = 1.0,
   saturation = 1.0,
   followMouse = true,
-  mouseInfluence = 0.1,
+  mouseInfluence = 0.5,
   noiseAmount = 0.0,
   distortion = 0.0,
   className = "",

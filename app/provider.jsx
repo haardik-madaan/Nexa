@@ -1,25 +1,23 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import LightRays from '@/components/reactBits/LightRays'
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { MessagesContext } from "@/context/MessagesContext";
+import { useState } from "react";
 
-const Provider = ({children}) => {
+const Provider = ({ children }) => {
+  const [messages,setMessages] = useState()
   return (
-    <div className="relative">
-        <LightRays className="!fixed inset-0 !-z-10 pointer-events-none" />
-        <NextThemesProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange>
-        
-      
-        {children}
+   <MessagesContext.Provider value = {{messages,setMessages}}>
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      disableTransitionOnChange
+    >
+      {children}
+    </NextThemesProvider>
+    </MessagesContext.Provider>
+  );
+};
 
-        </NextThemesProvider>
-        </div>
-  )
-}
-
-export default Provider
+export default Provider;

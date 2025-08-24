@@ -1,11 +1,13 @@
+// app/layout.js
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
-import Header from "@/components/custom/Header";
+import Header from "@/components/custom/LandingPage/Header";
 
-
-
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400","600","700"] });
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ["latin"], 
+  weight: ["400", "600", "700"] 
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -15,13 +17,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={spaceGrotesk.className} suppressHydrationWarning>
-      
       <body>
         <Provider>
-        <Header/>
-      
-        {children}
-
+          <Header />
+          {children}
         </Provider>
       </body>
     </html>

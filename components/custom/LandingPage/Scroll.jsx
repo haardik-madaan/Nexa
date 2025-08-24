@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import ScrollStack, { ScrollStackItem } from '../reactBits/ScrollStack'
+import ScrollStack, { ScrollStackItem } from '../../reactBits/ScrollStack'
 import { Play, Type, Sparkles } from 'lucide-react' 
 import ResumeCodeEditor from "@/components/reactBits/Editor";
 

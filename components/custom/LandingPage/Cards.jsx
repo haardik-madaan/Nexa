@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import CardSwap, { Card } from "../reactBits/CardSwap";
+import CardSwap, { Card } from "../../reactBits/CardSwap";
 import Image from "next/image";
 import first from "@/public/first.png";
 import second from "@/public/second.png";
@@ -18,9 +18,6 @@ const Cards = () => {
         overflow: "hidden",
       }}
     >
-      
-      
-
       {/* Foreground content centered like Hero */}
       <div
         style={{

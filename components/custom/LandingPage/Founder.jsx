@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
-import ProfileCard from '../reactBits/ProfileCard'
-import TrueFocus from '../reactBits/TrueFocus';
+import ProfileCard from '../../reactBits/ProfileCard'
+import TrueFocus from '../../reactBits/TrueFocus';
 
 const Founder = () => {
   return (
