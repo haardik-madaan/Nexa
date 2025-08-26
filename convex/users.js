@@ -1,0 +1,41 @@
+import { mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const createUser = mutation({
+  args: {  
+    name: v.string(),
+    tokenIdentifier: v.string(),
+    email: v.string(),
+    image: v.string(),
+    uid: v.string(),
+  },
+  handler: async (ctx, args) => {
+   
+    const existingUser = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", args.email))
+      .unique();
+
+    if (existingUser) {
+     
+      await ctx.db.patch(existingUser._id, {
+        name: args.name,
+        image: args.image,
+        tokenIdentifier: args.tokenIdentifier,
+        uid: args.uid,
+      });
+
+      return existingUser; 
+    }
+
+    const newUser = await ctx.db.insert("users", {
+      name: args.name,
+      tokenIdentifier: args.tokenIdentifier,
+      email: args.email,
+      image: args.image,
+      uid: args.uid,
+    });
+
+    return newUser;
+  }
+});

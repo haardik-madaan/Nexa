@@ -1,20 +1,24 @@
 "use client"
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRightIcon } from "lucide-react";
 import { suggestions } from "../../../constants/Suggestions";
 import { MessagesContext } from "@/context/MessagesContext";
+import { UserDetailContext } from "@/context/UserDetailContext";
+import SignInDialog from "./SignInDialog";
 
 function Hero() {
   const [prompt, setPrompt] = useState("");
   const [click, setClick] = useState(false);
   const { messages, setMessages } = useContext(MessagesContext);
+  const { userDetails } = useContext(UserDetailContext);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const onGenerate = (input) => {
     setMessages({
       role: "user",
-      content: input
+      content: input,
     });
   };
 
@@ -25,15 +29,22 @@ function Hero() {
   };
 
   const handleSubmit = () => {
+    if (!userDetails?.name) {
+      setDialogOpen(true);
+      return;
+    }
     onGenerate(prompt);
-    console.log(messages);
   };
 
-  
   const handleSuggestionClick = (suggestion) => {
-    setPrompt(suggestion);   
-    setClick(true);         
+    setPrompt(suggestion);
+    setClick(true);
+    
   };
+
+  useEffect(() => {
+    console.log("Updated messages:", messages);
+  }, [messages]);
 
   return (
     <div className="container h-screen flex flex-col justify-center items-center text-center px-4">
@@ -55,7 +66,7 @@ function Hero() {
           <Button
             type="submit"
             size="icon"
-            className="absolute right-3 top-7 -translate-y-1/2 rounded-xl"
+            className="absolute right-3 top-7 -translate-y-1/2 rounded-xl hover:cursor-pointer "
             onClick={handleSubmit}
           >
             <ArrowRightIcon className="w-6 h-6" />
@@ -68,18 +79,15 @@ function Hero() {
           <h2
             key={index}
             className="text-gray-400 bg-transparent text-sm border rounded-full p-1.5 hover:text-white cursor-pointer"
-            onClick={
-              () => {
-                handleSuggestionClick(suggestion)
-                onGenerate(suggestion)
-              }
-              
-            } 
+            onClick={() => handleSuggestionClick(suggestion)}
           >
             {suggestion}
           </h2>
         ))}
       </div>
+
+      <SignInDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+
     </div>
   );
 }
