@@ -7,6 +7,7 @@ import { suggestions } from "../../../constants/Suggestions";
 import { MessagesContext } from "@/context/MessagesContext";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import SignInDialog from "./SignInDialog";
+import Image from "next/image";
 
 function Hero() {
   const [prompt, setPrompt] = useState("");
@@ -46,8 +47,24 @@ function Hero() {
     console.log("Updated messages:", messages);
   }, [messages]);
 
+
+  
   return (
     <div className="container h-screen flex flex-col justify-center items-center text-center px-4">
+
+
+      {userDetails && (
+        <div className="absolute top-4 right-4">
+        <Image
+          src={userDetails?.picture || "/default-profile.png"}
+          alt="Profile Picture"
+          width={40}
+          height={40}
+          className="rounded-full shadow-md mt-7"
+        />
+        </div>
+      )}
+ 
       <h1 className="text-3xl md:text-5xl font-extrabold leading-tight max-w-3xl">
         Let’s build a website from scratch
       </h1>
