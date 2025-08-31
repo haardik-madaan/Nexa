@@ -8,6 +8,11 @@ import { MessagesContext } from "@/context/MessagesContext";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import SignInDialog from "./SignInDialog";
 import Image from "next/image";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api"; 
+import { useRouter } from "next/navigation";
+
+
 
 function Hero() {
   const [prompt, setPrompt] = useState("");
@@ -15,12 +20,21 @@ function Hero() {
   const { messages, setMessages } = useContext(MessagesContext);
   const { userDetails } = useContext(UserDetailContext);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const createWorkspace = useMutation(api.workspace.createWorkspace);
+  const router = useRouter();
 
-  const onGenerate = (input) => {
-    setMessages({
+  const onGenerate = async (input) => {
+    const msg = {
       role: "user",
       content: input,
-    });
+    }
+    setMessages(msg);
+    const workspaceId = await createWorkspace({
+      messages: [msg],
+      user: userDetails._id,
+    })
+    console.log("Workspace ID:", workspaceId);
+    router.push('/workspace/' + workspaceId);
   };
 
   const handleChange = (e) => {
@@ -54,22 +68,30 @@ function Hero() {
 
 
       {userDetails && (
+        
         <div className="absolute top-4 right-4">
-        <Image
-          src={userDetails?.picture || "/default-profile.png"}
-          alt="Profile Picture"
-          width={40}
-          height={40}
-          className="rounded-full shadow-md mt-7"
-        />
+       <Image
+  src={userDetails.image || "/default-profile.png"}
+  alt={userDetails.name || "Profile Picture"}
+  width={40}
+  height={40}
+  className="rounded-full shadow-md mt-7"
+  unoptimized
+  onError={(e) => { e.currentTarget.src = "/default-profile.png"; }}
+/>
+
+         
+
+
         </div>
+        
       )}
  
       <h1 className="text-3xl md:text-5xl font-extrabold leading-tight max-w-3xl">
         Let’s build a website from scratch
       </h1>
       <p className="mt-4 text-gray-500 max-w-xl">
-        Share your vision, and we’ll turn it into a website.
+        Share your vision, and we'll turn it into a website.
       </p>
 
       <div className="relative w-full max-w-2xl mt-6">
