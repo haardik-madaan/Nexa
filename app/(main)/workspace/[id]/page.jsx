@@ -4,9 +4,9 @@ import React from 'react'
 
 function workspace() {
   return (
-    <div className='p-20 mt-10 '>
-      <div className='grid grid-cols-3 md:grid-cols-4 h-screen'>
-        <div className='col-span-3 md:col-span-1 border-r'>
+    <div className=' h-screen w-screen p-1 flex flex-col overflow-hidden'>
+      <div className='grid grid-cols-3 md:grid-cols-4 h-screen gap-5 mt-30'>
+        <div className='w-full max-w-2xl h-[83vh] border rounded-xl overflow-hidden flex flex-col'>
           <ChatView/>
         </div>
         <div className='col-span-3 md:col-span-3'>
