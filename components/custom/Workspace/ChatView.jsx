@@ -10,7 +10,7 @@ import { Textarea } from '../../ui/textarea';
 import { Button } from '../../ui/button';
 import { ArrowRightIcon, Loader2Icon } from 'lucide-react';
 import axios from 'axios';
-import { updateWorkspace } from '../../../convex/workspace';
+
 
 function ChatView() {
   const convex = useConvex();
