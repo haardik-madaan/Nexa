@@ -1,9 +1,8 @@
-// app/layout.js
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
-import Header from "../components/custom/LandingPage/Header";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import ConditionalHeader from "../components/custom/ConditionalHeader";
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"], 
@@ -19,11 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={spaceGrotesk.className} suppressHydrationWarning>
       <body>
-      <ConvexClientProvider>
-        <Provider>
-          <Header />
-          {children}
-        </Provider>
+        <ConvexClientProvider>
+          <Provider>
+            <ConditionalHeader />
+            {children}
+          </Provider>
         </ConvexClientProvider>
       </body>
     </html>

@@ -10,6 +10,7 @@ import { Textarea } from '../../ui/textarea';
 import { Button } from '../../ui/button';
 import { ArrowRightIcon, Loader2Icon } from 'lucide-react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown'
 
 
 function ChatView() {
@@ -85,60 +86,59 @@ function ChatView() {
   
 
   return (
-    <div className="flex flex-col h-full max-h-[83vh]">
-      {/* Messages List */}
-      <div className="flex-1 p-4 overflow-y-scroll space-y-3">
-        {(Array.isArray(messages) ? messages : []).map((msg, index) => (
-          <div 
-            key={index} 
-            className={`flex items-start gap-3 ${msg.role === "assistant" ? "flex-row-reverse" : ""}`}
-          >
-            <Image 
-              src={msg.role === "assistant" 
-                ? "/bot.png" 
-                : (userDetails?.image || "/default-profile.png")} 
-              alt={msg.role}
-              width={45} 
-              height={45} 
-              className="rounded-full"
-            />
-            <div className={`px-3 py-2 rounded-xl max-w-[80%] break-words ${
-              msg.role === "assistant" ? "bg-blue-600 text-white" : "bg-gray-700 text-white"
-            }`}>
-              <p className="text-sm">{msg.content}</p>
-            </div>
-          </div>
-          
-        ))}
-          <div className="flex flex-row items-center gap-2 p-2">
-  {loading && (
-    <div className="flex items-center gap-2 text-gray-400 text-sm">
-      <Loader2Icon className="w-5 h-5 animate-spin text-blue-500" />
-      <p>Generating response...</p>
-    </div>
-  )}
-</div>
-      </div>
-    
-
-      {/* Input Box */}
-      <div className="relative w-full max-w-2xl mt-auto border-t border-gray-600 flex items-center gap-2 p-4">
-        <Textarea
-          placeholder="Type your message..."
-          className="flex-1 h-20 px-4 py-3 text-lg resize-none pr-14"
-          value={inputMessage}
-          onChange={handleChange}
+    <div className="flex flex-col h-full max-h-[92vh]">
+  {/* Messages List */}
+  <div className="flex-1 p-4 overflow-y-auto space-y-3">
+    {(messages || []).map((msg, index) => (
+      <div
+        key={index}
+        className={`flex items-start gap-3 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
+      >
+        <Image
+          src={msg.role === "assistant" ? "/bot.png" : (userDetails?.image || "/default-profile.png")}
+          alt={msg.role}
+          width={45}
+          height={45}
+          className="rounded-full"
         />
-        <Button
-          type="submit"
-          size="icon"
-          className="absolute right-6 top-1/2 -translate-y-1/2 rounded-xl hover:cursor-pointer"
-          onClick={onGenerate}
+        <div
+          className={`px-3 py-2 rounded-xl max-w-[80%] break-words ${
+            msg.role === "assistant" ? "bg-gray-700 text-white" : "bg-blue-600 text-white"
+          }`}
         >
-          <ArrowRightIcon className="w-6 h-6" />
-        </Button>
+          <ReactMarkdown>{msg.content}</ReactMarkdown>
+        </div>
       </div>
-    </div>
+    ))}
+
+    {/* Loading */}
+    {loading && (
+      <div className="flex items-center gap-2 text-gray-400 text-sm mt-2">
+        <Loader2Icon className="w-5 h-5 animate-spin text-blue-500" />
+        <p>Generating response...</p>
+      </div>
+    )}
+  </div>
+
+  {/* Input Box */}
+  <div className="border-t border-gray-600 p-2 flex items-center gap-2">
+    <Textarea
+      placeholder="Type your message..."
+      className="flex-1 h-20 px-4 py-3 text-lg resize-none pr-14"
+      value={inputMessage}
+      onChange={handleChange}
+    />
+    <Button
+      type="submit"
+      size="icon"
+      className="rounded-xl hover:cursor-pointer"
+      onClick={onGenerate}
+    >
+      <ArrowRightIcon className="w-6 h-6" />
+    </Button>
+  </div>
+</div>
+
   );
 }
 
