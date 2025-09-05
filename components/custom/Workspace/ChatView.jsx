@@ -106,7 +106,9 @@ function ChatView() {
             msg.role === "assistant" ? "bg-gray-700 text-white" : "bg-blue-600 text-white"
           }`}
         >
-          <ReactMarkdown>{msg.content}</ReactMarkdown>
+         <div className="flex flex-col">
+  <ReactMarkdown>{msg.content}</ReactMarkdown>
+</div>
         </div>
       </div>
     ))}
