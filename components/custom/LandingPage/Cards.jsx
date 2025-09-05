@@ -2,9 +2,10 @@
 import React from "react";
 import CardSwap, { Card } from "../../reactBits/CardSwap";
 import Image from "next/image";
-import first from "@/public/first.png";
-import second from "@/public/second.png";
-import deploy from "@/public/deploy.png";
+// Replace alias image imports with public string paths
+const first = "/first.png";
+const second = "/second.png";
+const deploy = "/deploy.png";
 import { Lock, Rocket, ShieldCheck, Users } from "lucide-react";
 import { motion } from "framer-motion";
 

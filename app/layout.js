@@ -2,7 +2,7 @@
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
-import Header from "@/components/custom/LandingPage/Header";
+import Header from "../components/custom/LandingPage/Header";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 
 const spaceGrotesk = Space_Grotesk({ 

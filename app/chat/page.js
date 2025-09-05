@@ -1,6 +1,6 @@
-import Hero from "@/components/custom/ChatPage/Hero";
+import Hero from "../../components/custom/ChatPage/Hero";
 import React from "react";
-import Prism from "@/components/reactBits/Prism";
+import Prism from "../../components/reactBits/Prism";
 
 function Page() {
   return (

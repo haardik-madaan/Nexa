@@ -7,16 +7,16 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+} from "../../ui/dialog"
+import { Button } from "../../ui/button"
 import { FcGoogle } from "react-icons/fc"
 import ElectricBorder from '../../reactBits/ElectricBorder'
 import { useGoogleLogin } from '@react-oauth/google'
-import { UserDetailContext } from '@/context/UserDetailContext'
+import { UserDetailContext } from '../../../context/UserDetailContext'
 import axios from 'axios'
 import { useMutation } from 'convex/react'
 import uuid4 from 'uuid4'
-import { api } from "@/convex/_generated/api";
+import { api } from "../../../convex/_generated/api";
 
 
 function SignInDialog({ open, onOpenChange }){

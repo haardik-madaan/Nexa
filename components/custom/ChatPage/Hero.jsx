@@ -1,15 +1,15 @@
 "use client"
 import React, { useContext, useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "../../ui/button";
+import { Textarea } from "../../ui/textarea";
 import { ArrowRightIcon } from "lucide-react";
 import { suggestions } from "../../../constants/Suggestions";
-import { MessagesContext } from "@/context/MessagesContext";
-import { UserDetailContext } from "@/context/UserDetailContext";
+import { MessagesContext } from "../../../context/MessagesContext";
+import { UserDetailContext } from "../../../context/UserDetailContext";
 import SignInDialog from "./SignInDialog";
 import Image from "next/image";
 import { useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api"; 
+import { api } from "../../../convex/_generated/api"; 
 import { useRouter } from "next/navigation";
 
 
@@ -60,7 +60,6 @@ function Hero() {
   useEffect(() => {
     console.log("Updated messages:", messages);
   }, [messages]);
-
 
   
   return (

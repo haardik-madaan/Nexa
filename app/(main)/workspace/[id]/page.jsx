@@ -1,5 +1,5 @@
-import ChatView from '@/components/custom/Workspace/ChatView'
-import CodeView from '@/components/custom/Workspace/CodeView'
+import ChatView from '../../../../components/custom/Workspace/ChatView'
+import CodeView from '../../../../components/custom/Workspace/CodeView'
 import React from 'react'
 
 function workspace() {

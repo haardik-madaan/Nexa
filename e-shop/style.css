@@ -1,0 +1,53 @@
+/* Custom Styles */
+.dark-mode {
+    background-color: #1a202c;
+    color: #edf2f7;
+}
+
+.dark-mode nav {
+    background-color: #2d3748;
+    color: #edf2f7;
+}
+
+.dark-mode .text-gray-800 {
+    color: #edf2f7;
+}
+
+.dark-mode .text-gray-600 {
+    color: #a0aec0;
+}
+
+.dark-mode .bg-white {
+    background-color: #2d3748;
+}
+
+.dark-mode .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark-mode .border {
+    border-color: #4a5568;
+}
+
+.dark-mode input, .dark-mode textarea {
+    background-color: #4a5568;
+    color: #edf2f7;
+}
+
+/* Parallax Effect */
+.parallax-container {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+}

@@ -1,14 +1,14 @@
 "use client";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { MessagesContext } from "@/context/MessagesContext";
+import { MessagesContext } from "../context/MessagesContext";
 import { useEffect, useState } from "react";
-import { UserDetailContext } from "@/context/UserDetailContext";
+import { UserDetailContext } from "../context/UserDetailContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useConvex } from "convex/react";
 
 const Provider = ({ children }) => {
-  const [messages,setMessages] = useState()
+  const [messages,setMessages] = useState([])
   const [userDetails, setUserDetails] = useState();
   const convex = useConvex()
 

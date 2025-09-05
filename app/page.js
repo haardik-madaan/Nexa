@@ -1,10 +1,10 @@
 // app/page.js
-import Cards from "@/components/custom/LandingPage/Cards";
-import Footer from "@/components/custom/LandingPage/Footer";
-import Founder from "@/components/custom/LandingPage/Founder";
-import Hero from "@/components/custom/LandingPage/Hero";
-import LightRays from "@/components/reactBits/LightRays";
-import Scroll from "@/components/custom/LandingPage/Scroll";
+import Cards from "../components/custom/LandingPage/Cards";
+import Footer from "../components/custom/LandingPage/Footer";
+import Founder from "../components/custom/LandingPage/Founder";
+import Hero from "../components/custom/LandingPage/Hero";
+import LightRays from "../components/reactBits/LightRays";
+import Scroll from "../components/custom/LandingPage/Scroll";
 
 export default function Home() {
   return (
