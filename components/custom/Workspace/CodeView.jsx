@@ -1,11 +1,35 @@
-import React from 'react'
+"use client";
+import React from "react";
+import {
+  SandpackProvider,
+  SandpackLayout,
+  SandpackCodeEditor,
+  SandpackPreview,
+  SandpackFileExplorer
+} from "@codesandbox/sandpack-react";
 
-function CodeView() {
+import MyTerminal from "../../../sandbox/MyTerminal";
+
+export default function CodeView() {
   return (
-    <div>
-      <h2>code appears here.</h2>
-    </div>
-  )
-}
+    <SandpackProvider template="static">
+      <div style={{ display: "flex", height: "500px" }}>
+        {/* Left side: File explorer + editor */}
+        <div style={{ width: "40%", display: "flex", flexDirection: "column" }}>
+          <SandpackFileExplorer />
+          <SandpackCodeEditor style={{ flex: 1 }} />
+        </div>
 
-export default CodeView
+        {/* Right side: Preview */}
+        <div style={{ width: "60%", paddingLeft: "10px" }}>
+          <SandpackPreview style={{ height: "100%" }} />
+        </div>
+      </div>
+
+      {/* Terminal below everything */}
+      <div style={{ marginTop: "10px" }}>
+        <MyTerminal />
+      </div>
+    </SandpackProvider>
+  );
+}
