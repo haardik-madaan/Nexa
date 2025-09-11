@@ -15,11 +15,21 @@ import { Files } from "../../../constants/Files";
 import { GenAiCode } from "@/config/AiModel";
 import axios from "axios";
 import { amethyst } from "@codesandbox/sandpack-themes";
+import { useConvex, useMutation } from "convex/react";
+import { useParams } from "next/navigation";
+import { api } from "@/convex/_generated/api";
 
 function CodeView() {
+  const {id} = useParams();
   const { messages, setMessages } = useContext(MessagesContext);
   const [files, setFiles] = useState(Files);
   const [section, setSection] = useState("code");
+  const updateFiles = useMutation(api.workspace.updateFiles)
+  const convex = useConvex();
+
+  useEffect(()=>{
+      id&&GetFiles()
+  },[id])
 
   useEffect(() => {
     if (messages?.length > 0) {
@@ -30,6 +40,15 @@ function CodeView() {
     }
   }, [messages]);
 
+  const GetFiles = async () => {
+    const result = await convex.query(api.workspace.getWorkspace,{
+      workspaceId: id
+    });
+
+    const mergedFiles = { ...Files, ...result?.fileData };
+    setFiles(mergedFiles)
+  }
+
   const GenerateAiCode = async () => {
     const PROMPT = messages[messages.length - 1].content + CodeGenPrompt;
     const result = await axios.post("/api/gen-ai-code", { prompt: PROMPT });
@@ -38,6 +57,10 @@ function CodeView() {
     const aiResp = result.data;
     const mergedFiles = { ...Files, ...aiResp?.files };
     setFiles(mergedFiles);
+    await updateFiles({
+        workspaceId: id,
+        files: aiResp?.files
+    })
   };
 
   return (
@@ -75,7 +98,7 @@ function CodeView() {
             </>
             :
               <>
-              <SandpackPreview style={{ height: "93vh" }} />
+              <SandpackPreview style={{ height: "93vh" }}  showNavigator={true} />
               </>
 }
           </SandpackLayout>
