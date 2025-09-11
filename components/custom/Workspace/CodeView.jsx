@@ -67,14 +67,17 @@ function CodeView() {
       {/* Sandpack Editor */}
       <div>
         <SandpackProvider template="static" files={files} theme="dark">
-          <SandpackLayout>
+          <SandpackLayout style={{width : "121.5vh"}}>
+            {section == "code" ? 
             <>
               <SandpackFileExplorer style={{ height: "93vh" }} />
-              <SandpackCodeEditor style={{ height: "93vh", width: "100vh" }} />
+              <SandpackCodeEditor style={{ height: "93vh" }} />
             </>
-            {section === "preview" && (
+            :
+              <>
               <SandpackPreview style={{ height: "93vh" }} />
-            )}
+              </>
+}
           </SandpackLayout>
         </SandpackProvider>
       </div>
