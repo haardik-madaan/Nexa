@@ -31,17 +31,17 @@ const Founder = () => {
             <span className="text-indigo-400"> Artificial Intelligence</span>. 
           </p>
           <p className="text-lg text-gray-300 leading-relaxed mb-4">
-            Currently pursuing my <span className="font-medium text-white">B.Tech in Computer Science</span> 
+            Currently pursuing my <span className="font-medium text-white">B.Tech in Computer Science </span> 
             at <span className="font-medium text-white">Bennett University</span>, I enjoy building impactful, 
             user-focused applications and solving complex problems through clean and scalable code.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed">
             Beyond academics, I’ve developed projects ranging from 
             <span className="text-indigo-400"> AI-powered chatbots</span> to 
-            <span className="text-indigo-400"> trading platforms</span> and 
-            <span className="text-indigo-400"> real-time tracking systems</span>. 
+            <span className="text-indigo-400"> trading platforms</span> and a 
+            <span className="text-indigo-400">  Mock interview platform </span>. 
             My vision is to create technology that merges innovation with practical use, 
-            helping people experience the true power of software.
+            helping people experience the true power of tech.
           </p>
         </div>
 

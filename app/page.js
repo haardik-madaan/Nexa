@@ -1,10 +1,12 @@
-// app/page.js
+"use client"
 import Cards from "../components/custom/LandingPage/Cards";
 import Footer from "../components/custom/LandingPage/Footer";
 import Founder from "../components/custom/LandingPage/Founder";
 import Hero from "../components/custom/LandingPage/Hero";
 import LightRays from "../components/reactBits/LightRays";
 import Scroll from "../components/custom/LandingPage/Scroll";
+import Loop from "../components/custom/LandingPage/Loop"
+
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
         <Cards />
         <Scroll />
         <Founder />
+        <Loop/>
         <Footer />
       </div>
     </div>

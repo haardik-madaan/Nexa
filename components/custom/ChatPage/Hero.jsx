@@ -18,24 +18,48 @@ function Hero() {
   const [prompt, setPrompt] = useState("");
   const [click, setClick] = useState(false);
   const { messages, setMessages } = useContext(MessagesContext);
-  const { userDetails } = useContext(UserDetailContext);
+  const {userDetails,setUserDetails} = useContext(UserDetailContext)
   const [dialogOpen, setDialogOpen] = useState(false);
   const createWorkspace = useMutation(api.workspace.createWorkspace);
+  const [isCreating, setIsCreating] = useState(false);
   const router = useRouter();
+  const [imgSrc, setImgSrc] = useState(
+    userDetails?.image ?? "/default-profile.png"
+  );
 
   const onGenerate = async (input) => {
+    if (isCreating) return; // prevent multiple triggers
+    setIsCreating(true);
+  
+    if (!userDetails) {
+      setDialogOpen(true);
+      setIsCreating(false);
+      return;
+    }
+  
     const msg = {
       role: "user",
       content: input,
+    };
+  
+    setMessages(prev => {
+      if (!Array.isArray(prev)) return prev ? [prev, msg] : [msg];
+      return [...prev, msg];
+    });
+  
+    try {
+      const workspaceId = await createWorkspace({
+        messages: [msg],
+        user: userDetails?._id,
+      });
+  
+      console.log("Workspace ID:", workspaceId);
+      router.push('/workspace/' + workspaceId);
+    } finally {
+      setIsCreating(false); // reset only if user stays on same page
     }
-    setMessages(msg);
-    const workspaceId = await createWorkspace({
-      messages: [msg],
-      user: userDetails._id,
-    })
-    console.log("Workspace ID:", workspaceId);
-    router.push('/workspace/' + workspaceId);
   };
+  
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -61,6 +85,10 @@ function Hero() {
     console.log("Updated messages:", messages);
   }, [messages]);
 
+  useEffect(() => {
+    setImgSrc(userDetails?.image ?? "/default-profile.png");
+  }, [userDetails?.image]);
+
   
   return (
     <div className="container h-screen flex flex-col justify-center items-center text-center px-4">
@@ -69,15 +97,18 @@ function Hero() {
       {userDetails && (
         
         <div className="absolute top-4 right-4">
-       <Image
-  src={userDetails.image || "/default-profile.png"}
-  alt={userDetails.name || "Profile Picture"}
-  width={40}
-  height={40}
-  className="rounded-full shadow-md mt-7"
-  unoptimized
-  onError={(e) => { e.currentTarget.src = "/default-profile.png"; }}
-/>
+     <Image
+      src={imgSrc}
+      alt={userDetails?.name ?? "Profile Picture"}
+      width={40}
+      height={40}
+      className="rounded-full shadow-md mt-7"
+      unoptimized={false} // try turning off unoptimized to let Next optimize/cache
+      onError={() => {
+        // set fallback once — avoids infinite onError loops
+        setImgSrc("/default-profile.png");
+      }}
+    />
 
          
 

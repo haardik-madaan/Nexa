@@ -19,10 +19,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="#about" className="hover:text-white">About Us</a></li>
-            <li><a href="#services" className="hover:text-white">Services</a></li>
+            <li><a href="/about" className="hover:text-white">About Us</a></li>
+            {/* <li><a href="#services" className="hover:text-white">Services</a></li> */}
             <li><a href="#projects" className="hover:text-white">Projects</a></li>
-            <li><a href="#contact" className="hover:text-white">Contact</a></li>
+            <li><a href="https://x.com/haardik_madaan" className="hover:text-white">Contact</a></li>
           </ul>
         </div>
 
@@ -30,7 +30,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Contact</h3>
           <ul className="space-y-2 text-sm">
-            <li>Email: <a href="mailto:info@nexa.com" className="hover:text-white">haardikmadaan@gmail.com</a></li>
+            <li>Email: <a href="haardikmadaan@gmail.com" className="hover:text-white">haardikmadaan@gmail.com</a></li>
             <li>Phone: +91 8168113108</li>
             <li>Address: Bennett University, Greater Noida, India</li>
           </ul>
@@ -40,18 +40,18 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Follow Us</h3>
           <div className="flex space-x-4">
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+            {/* <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
               <FaFacebookF />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+            </a> */}
+            <a href="https://x.com/haardik_madaan" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
               <FaTwitter />
             </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+            <a href="https://www.linkedin.com/in/haardik-madaan-2040ba25b/" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
               <FaLinkedinIn />
             </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+            {/* <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
               <FaInstagram />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

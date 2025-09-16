@@ -1,15 +1,21 @@
+"use client"
 import Image from 'next/image';
 import ChatView from '../../../../components/custom/Workspace/ChatView';
 import CodeView from '../../../../components/custom/Workspace/CodeView';
 import React from 'react';
 import logo from "./../../../../public/logo.png"
+import { useRouter } from 'next/navigation';
+
+
 
 function Workspace() {
+  const router = useRouter()
+  
   return (
     <div className="h-screen w-screen flex flex-col overflow-auto gap-0">
       {/* Navbar */}
       <div className="h-14 border-b border-gray-700 flex items-center justify-center ">
-        <Image src={logo} alt='logo' height={140} width={140}/> 
+        <Image src={logo} alt='logo' height={140} width={140} onClick={()=>router.push("/")}/> 
       </div>
 
       {/* Workspace content */}

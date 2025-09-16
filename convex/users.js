@@ -2,7 +2,7 @@ import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 
 export const createUser = mutation({
-  args: {  
+  args: {
     name: v.string(),
     tokenIdentifier: v.string(),
     email: v.string(),
@@ -16,13 +16,15 @@ export const createUser = mutation({
       .unique();
 
     if (existingUser) {
+      // Patch then fetch updated document and return that.
       await ctx.db.patch(existingUser._id, {
         name: args.name,
         image: args.image,
         tokenIdentifier: args.tokenIdentifier,
         uid: args.uid,
       });
-      return existingUser; 
+      const updated = await ctx.db.get(existingUser._id);
+      return updated;
     }
 
     const newUser = await ctx.db.insert("users", {
@@ -33,9 +35,10 @@ export const createUser = mutation({
       uid: args.uid,
     });
 
-    return newUser;
+    return newUser; // this object contains _id
   },
 });
+
 
 export const getUser = query({
   args: {

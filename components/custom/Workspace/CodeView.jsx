@@ -18,38 +18,50 @@ import { amethyst } from "@codesandbox/sandpack-themes";
 import { useConvex, useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import { api } from "@/convex/_generated/api";
+import { Loader2Icon, LoaderPinwheel, LoaderPinwheelIcon } from "lucide-react";
+import Loader from "../../../components/reactBits/Loader"
 
 function CodeView() {
   const {id} = useParams();
   const { messages, setMessages } = useContext(MessagesContext);
   const [files, setFiles] = useState(Files);
   const [section, setSection] = useState("code");
+  const [loading,setLoading] = useState(false);
   const updateFiles = useMutation(api.workspace.updateFiles)
   const convex = useConvex();
 
-  useEffect(()=>{
-      id&&GetFiles()
-  },[id])
 
-  useEffect(() => {
-    if (messages?.length > 0) {
-      const role = messages[messages.length - 1].role;
-      if (role === "user") {
-        GenerateAiCode();
-      }
+  const [prevLength, setPrevLength] = useState(0);
+
+useEffect(() => {
+  if (messages?.length > prevLength) {
+    const role = messages[messages.length - 1].role;
+    if (role === "user") {
+      GenerateAiCode();
     }
-  }, [messages]);
+    setPrevLength(messages.length);
+  }
+}, [messages, prevLength]);
+
+useEffect(()=>{
+  id&&GetFiles()
+  return;
+},[id])
+
 
   const GetFiles = async () => {
+    setLoading(true);
     const result = await convex.query(api.workspace.getWorkspace,{
       workspaceId: id
     });
 
     const mergedFiles = { ...Files, ...result?.fileData };
     setFiles(mergedFiles)
+    setLoading(false)
   }
 
   const GenerateAiCode = async () => {
+    setLoading(true);
     const PROMPT = messages[messages.length - 1].content + CodeGenPrompt;
     const result = await axios.post("/api/gen-ai-code", { prompt: PROMPT });
 
@@ -61,11 +73,21 @@ function CodeView() {
         workspaceId: id,
         files: aiResp?.files
     })
+    setLoading(false);
   };
 
   return (
     <div>
-      {/* Toggle Buttons */}
+        {loading && (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/40 z-50">
+      <div className="w-70 h-70">
+        <Loader />  
+      </div>
+      <h2 className="text-white mt-0 text-md">Cooking your website...</h2>
+    </div>
+    
+    )}
+         
       <div className="flex justify-center ">
         <div className="flex row justify-center items-center gap-2  p-2">
           <h2
@@ -103,6 +125,7 @@ function CodeView() {
 }
           </SandpackLayout>
         </SandpackProvider>
+      
       </div>
     </div>
   );

@@ -46,13 +46,13 @@ const Hero = () => {
           <div className="flex space-x-4 mt-8">
             <button 
               onClick={() => router.push("/chat")}  
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-gray-200 to-gray-300 text-black font-medium shadow-md hover:opacity-90 transition"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-gray-200 hover: cursor-pointer to-gray-300 text-black font-medium shadow-md hover:opacity-90 transition"
             >
               Get Started
             </button>
 
-            <button className="px-6 py-3 rounded-full border border-gray-500 text-gray-400 font-medium hover:border-gray-300 hover:text-gray-200 transition">
-              Learn More
+            <button className="px-6 py-3 rounded-full border border-gray-500 hover: cursor-pointer text-gray-400 font-medium hover:border-gray-300 hover:text-gray-200 transition" onClick={()=>router.push("/samples")}>
+             Projects
             </button>
           </div>
         </section>
